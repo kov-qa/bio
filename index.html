@@ -155,7 +155,8 @@
     }
 
     @media (max-width: 600px) {
-      .geo, .code-symbols { display: none; }
+      .geo { display: none; }
+      .code-symbols span { font-size: 12px; }
     }
 
     .container {
@@ -431,8 +432,10 @@
       0%, 100% { transform: translate(0, 0); }
       50%      { transform: translate(2px, 1px); }
     }
-    @media (max-width: 720px) {
-      .gh-hint { display: none; }
+    @media (max-width: 480px) {
+      .gh-hint { font-size: 0.62rem; gap: 4px; }
+      .gh-hint .gh-hint-text { max-width: 64px; }
+      .gh-hint .gh-hint-arrow { width: 28px; height: 16px; }
     }
 
     .avatar-row .avatar-wrap {
@@ -893,7 +896,7 @@
   // ===== Floating code symbols =====
   const symbolsHost = document.getElementById('code-symbols');
   const SYMBOL_POOL = ['{', '}', '<', '>', '/>', '</>', '()', '=>', '0', '1', '*', '#', '$', ';', '~', '[]', '||', '&&', '++'];
-  const SYMBOL_COUNT = window.innerWidth < 700 ? 0 : 16;
+  const SYMBOL_COUNT = window.innerWidth < 480 ? 8 : (window.innerWidth < 700 ? 12 : 16);
 
   if (symbolsHost && SYMBOL_COUNT > 0) {
     const frag = document.createDocumentFragment();
